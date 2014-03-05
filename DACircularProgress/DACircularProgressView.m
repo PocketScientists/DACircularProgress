@@ -120,7 +120,11 @@
 
 - (id)init
 {
-    return [super initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
+    self = [super initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 40.0f)];
+    if (self) {
+        self.durationFactor = 1.f;
+    }
+    return self;
 }
 
 - (void)didMoveToWindow
@@ -150,7 +154,7 @@
     if (animated)
     {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
-        animation.duration = fabsf(self.progress - pinnedProgress); // Same duration as UIProgressView animation
+        animation.duration = fabsf(self.progress - pinnedProgress) * self.durationFactor; // Same duration as UIProgressView animation
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];

@@ -19,6 +19,8 @@
 @property(nonatomic) CGFloat indeterminateDuration UI_APPEARANCE_SELECTOR;
 @property(nonatomic) NSInteger indeterminate UI_APPEARANCE_SELECTOR; // Can not use BOOL with UI_APPEARANCE_SELECTOR :-(
 
+@property (nonatomic, assign) CGFloat durationFactor; // Duration of animation in seconds => durationFactor * ∆ progress (default durationFactor = 1.f)
+
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
 
 @end
